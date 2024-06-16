@@ -21,10 +21,10 @@ app.use((req, res, next) => {
 app.use("/api/currencies", currencyRoute);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });
 
 // Handle 404 errors

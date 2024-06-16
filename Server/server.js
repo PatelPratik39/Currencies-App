@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const currencyRoute = require("./routes/routes");
+const path = require("path");
+
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +19,13 @@ app.use((req, res, next) => {
 
 // Use currency routes
 app.use("/api/currencies", currencyRoute);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // Handle 404 errors
 app.use((req, res) => {

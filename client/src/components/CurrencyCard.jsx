@@ -7,11 +7,14 @@ import {
   Typography,
   CardActionArea
 } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { green, grey } from "@mui/material/colors";
 
 const CurrencyCard = ({ currency }) => {
+  const countries = currency.countries ? currency.countries.join(", ") : "N/A";
+  const subunits = currency.subunits ? currency.subunits.join(", ") : "N/A";
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, bgcolor: grey[300] }}>
       <CardActionArea>
         <Grid
           container
@@ -28,7 +31,7 @@ const CurrencyCard = ({ currency }) => {
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {currency.name}
+            <b>{currency.name}</b>
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <strong>Code:</strong> {currency.code}
@@ -40,10 +43,12 @@ const CurrencyCard = ({ currency }) => {
             <strong>Exchange Rate:</strong> {currency.exchange_rate}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Countries:</strong> {currency.countries.join(", ")}
+            {/* <strong>Countries:</strong> {currency.countries.join(", ")} */}
+            <strong>Countries:</strong> {countries}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Subunits:</strong> {currency.subunits.join(", ")}
+            {/* <strong>Subunits:</strong> {currency.subunits.join(", ")} */}
+            <strong>Subunits:</strong> {subunits}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {currency.description}
@@ -55,21 +60,3 @@ const CurrencyCard = ({ currency }) => {
 };
 
 export default CurrencyCard;
-
-/*
-{
-        "id": 273,
-        "name": "Zimbabwean Dollar",
-        "code": "ZWL",
-        "symbol": "Z$",
-        "exchange_rate": 361.9,
-        "countries": [
-            "Zimbabwe"
-        ],
-        "subunits": [
-            "cent"
-        ],
-        "description": "The Zimbabwean Dollar is the official currency of Zimbabwe.",
-        "image": "https://fakeimg.pl/100x100/cccccc"
-    },
-*/

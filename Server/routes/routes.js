@@ -45,11 +45,10 @@ router.get("/:id", (req, res) => {
   fetchCurrencies(`${API_URL}/${req.params.id}`, res);
 });
 
-// Route to get a limited number of currency
-router.get("/limit/:limit", (req, res) => {
-  fetchCurrencies(`${API_URL}?limit=${req.params.limit}`, res);
+// Route to get a limited number of Currencies
+router.get('/limit/:limit', (req, res) => {
+  fetchCurrencies(`${API_BASE_URL}?limit=${req.params.limit}`, res);
 });
-
 // Route to search for currencies
 router.get("/search/:query", (req, res) => {
   fetchCurrencies(`${API_URL}?search=${req.params.query}`, res);

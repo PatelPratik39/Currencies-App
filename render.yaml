@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: currencies-backend
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: currencies-frontend
+    env: node
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    startCommand: npx serve -s client/build
+    envVars:
+      - key: NODE_ENV
+        value: production

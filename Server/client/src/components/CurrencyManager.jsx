@@ -183,7 +183,6 @@
 
 // export default CurrencyManager;
 
-
 import React, { useState } from "react";
 import {
   getAllCurrencies,
@@ -192,7 +191,7 @@ import {
   searchCurrencies,
   sortCurrencies
 } from "../API/api.js";
-import CurrencyCard from "./CurrencyCard";
+import CurrencyCard from "./CurrencyCard.jsx";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
@@ -210,14 +209,14 @@ const CurrencyManager = () => {
   const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
- const handleGetAll = async () => {
-   try {
-     const data = await getAllCurrencies();
-     setCurrencies(data);
-   } catch (error) {
-     setError("Failed to fetch all currencies.");
-   }
- };
+  const handleGetAll = async () => {
+    try {
+      const data = await getAllCurrencies();
+      setCurrencies(data);
+    } catch (error) {
+      setError("Failed to fetch all currencies.");
+    }
+  };
   const handleGetSingle = async (id) => {
     try {
       const data = await getSingleCurrency(id);

@@ -1,20 +1,30 @@
 services:
   - type: web
-    name: currencies-backend
-    env: node
+    name: currencies-frontend
+    runtime: node
+    repo: https://github.com/PatelPratik39/Currencies-App
     plan: free
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
         value: production
+        sync: false
+    region: oregon
+    buildCommand: cd client && npm install && npm run build
+    startCommand: npx serve -s build
 
   - type: web
-    name: currencies-frontend
-    env: node
+    name: currencies-backend
+    runtime: node
+    repo: https://github.com/PatelPratik39/Currencies-App
     plan: free
-    buildCommand: cd client && npm install && npm run build
-    startCommand: npx serve -s client/build
     envVars:
       - key: NODE_ENV
         value: production
+        sync: false
+    region: oregon
+    buildCommand: cd server && npm install
+    startCommand: node server.js
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

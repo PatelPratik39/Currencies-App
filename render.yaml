@@ -20,5 +20,5 @@ services:
       - key: NODE_ENV
         value: production
     region: oregon
-    buildCommand: cd server && npm install
+    buildCommand: cd Server && npm install
     startCommand: node server.js

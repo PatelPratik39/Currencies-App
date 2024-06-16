@@ -7,6 +7,13 @@ const PORT = 3000;
 
 // Enable CORS
 app.use(cors());
+// Add headers to control caching
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); // HTTP 1.1
+  res.setHeader('Pragma', 'no-cache'); // HTTP 1.0
+  res.setHeader('Expires', '0'); // Proxies
+  next();
+});
 
 // Use currency routes
 app.use("/api/currencies", currencyRoute);

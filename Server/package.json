@@ -4,7 +4,10 @@
   "description": "\"Currency Finder App\"",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "Pratik Patel",
   "license": "ISC",
